@@ -26,6 +26,8 @@ profit = mini_movie_frame['Profit'].sum()
 
 # output total ticket sales and profits
 print(mini_movie_frame)
+print()
 
 # output total ticket sales and profit
-print(f"total Ticket Sales: $")
+print(f"total Ticket Sales: ${total:.2f}")
+print(f"Total Profit: ${profit:.2f}")
