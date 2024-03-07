@@ -1,4 +1,5 @@
 import pandas
+import random
 
 
 # functions go here
@@ -134,7 +135,7 @@ while tickets_sold < MAX_TICKETS:
     all_surcharge.append(surcharge)
 
 mini_movie_frame = pandas.DataFrame(mini_movie_dict)
-mini_movie_frame = mini_movie_frame.set_index('Name')
+# mini_movie_frame = mini_movie_frame.set_index('Name')
 
 # Calculate the total cost (ticket + surcharge)
 mini_movie_frame['Total'] = mini_movie_frame['Surcharge']\
@@ -143,8 +144,13 @@ mini_movie_frame['Total'] = mini_movie_frame['Surcharge']\
 # calculate the total profit for each ticket
 mini_movie_frame['Profit'] = mini_movie_frame['Ticket Price'] - 5
 
-# Calculate ticket and profit totals
+winner_name = random.choice(all_names)
 
+win_index = all_names.index(winner_name)
+
+total_won = mini_movie_frame.at[win_index, 'Total']
+
+# Calculate ticket and profit totals
 total = mini_movie_frame['Total'].sum()
 profit = mini_movie_frame['Profit'].sum()
 
@@ -165,6 +171,10 @@ print("---- Ticket cost / profit ----")
 print(f"total Ticket Sales: ${total:.2f}")
 print(f"Total Profit: ${profit:.2f}")
 
+print()
+print('---- Raffle Winner ----')
+print(f"Congratulations {winner_name}. you have won${total_won} ie: your ticket is free!")
+print()
 
 if tickets_sold == MAX_TICKETS:
     print("you have sold all of the tickets")
