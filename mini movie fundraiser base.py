@@ -204,11 +204,11 @@ total_profit = f"total profit: ${profit}"
 if tickets_sold == MAX_TICKETS:
     sales_status = "\n*** All the tickets have been sold ***"
 else:
-    sales_status = ""
+    sales_status = f"***8 you have sold {tickets_sold} out of {MAX_TICKETS} tickets ****"
 
 winner_heading = "\n---- Raffle winner ----"
 winner_text = f"The winner of the raffle is {winner_name}."\
-    f"They have won ${total_won}. ie: their ticket is free!"
+    f"They have won ${total_won:.2sf}. ie: their ticket is free!"
 
 # list holding content to print / write to file
 to_write = [heading, mini_movie_string, ticket_cost_heading,
