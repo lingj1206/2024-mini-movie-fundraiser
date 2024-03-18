@@ -117,11 +117,11 @@ if want_instructions == "yes":
 while tickets_sold < MAX_TICKETS:
     name = not_blank("enter your name or 'xxx' to exit: ")
 
-    if name == 'xxx' or len(all_names) < 0:
-        break
-    elif name == 'xxx':
+    if name == 'xxx' and len(all_names) <= 0:
         print("You must sell at least One ticket before quitting")
         continue
+    elif name == 'xxx':
+        break
 
     age = num_check("Age: ")
 
@@ -201,8 +201,10 @@ total_ticket_sales = f"Total Ticket sales: ${total}"
 total_profit = f"total profit: ${profit}"
 
 #
-sales_status = "\n*** All the tickets have been sold ***"
-
+if tickets_sold == MAX_TICKETS:
+    sales_status = "\n*** All the tickets have been sold ***"
+else:
+    sales_status = ""
 
 winner_heading = "\n---- Raffle winner ----"
 winner_text = f"The winner of the raffle is {winner_name}."\
@@ -227,4 +229,3 @@ for item in to_write:
 
 # close file
 text_file.close()
-
